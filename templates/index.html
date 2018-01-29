@@ -18,7 +18,7 @@
 	<body>
 		<div class="wrap">
 			<div id="wrap-main">
-				<img src="{{ url_for('static', filename='img/polaris-logo.png') }}">
+				<center><img src="{{ url_for('static', filename='img/polaris-logo.png') }}" align="middle"></center>
 				<div style="height:30px;"></div>
 				<form action="{{ url_for('search') }}" method="post" id="search-form">
 					<input type="text" placeholder="Enter keyword..." name="keyword"/>
