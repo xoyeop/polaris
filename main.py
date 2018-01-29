@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask import render_template, request, jsonify
 
@@ -5,7 +6,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	dataset_dir = "./dataset/"
+	datasets = os.listdir(dataset_dir)
+	return render_template('index.html', datasets=datasets)
 
 @app.route('/result', methods=['POST'])
 def search():

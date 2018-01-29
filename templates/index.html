@@ -14,6 +14,26 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<!-- Latest compiled JavaScript for Bootstrap4 -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+		<!-- temporary -->
+		<script>
+			$(function(){
+				$(".ds-name").click(function(){
+					dsname = $(this).attr("data-dsname");
+					$(this).toggleClass("selected")	
+				})	
+			})	
+		</script>
+		<!-- temporary -->
+		<style>
+			.selected {
+				background: yellow !important;	
+			}
+			.ds-name{
+				background:rgba(220,220,220,0.5);
+				padding: 5px;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="wrap">
@@ -24,6 +44,13 @@
 					<input type="text" placeholder="Enter keyword..." name="keyword"/>
 					<input type="submit" class="fa" value="&#xf002;"/>
 				</form>
+				<div style="border: 1px dotted gray; border-radius: 5px; margin: 10px 0; padding: 10px; cursor: pointer;">
+					<h4>Data Source</h4>
+					<span class="ds-name" data-dsname="asterixdb" >asterixdb</span>
+					{% for d in datasets %}
+						<span class="ds-name" data-dsname="{{d}}" >{{d}}</span>
+					{% endfor %}
+				</div>
 			</div>
 		</div>
 
