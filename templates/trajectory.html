@@ -1,10 +1,100 @@
 Trajectory!!
 
 <div id="trajectory-wrap"></div>
-<script>
+<div id="trajectory-map"></div>
+<script type="text/javascript">
 	$.ajax('/trajectory', {	
 		success: function(data) {
 			$("#trajectory-wrap").html(data);
 		}
 	});
+
+	console.log(statesData);
+
+	var mapboxAccessToken = "pk.eyJ1IjoiYmJ1c3NvIiwiYSI6ImNqNHMzb3FvYzFmejgzM3RjNHcydWdqeG8ifQ.LLJ5qBPOpUw1gOwfJldinQ";
+	var map = L.map('trajectory-map').setView([37.8, -96], 4);
+	var geojson;
+
+	/*
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapboxAccessToken, {
+			id: 'mapbox.light'
+			// attribution: ...
+	}).addTo(map);
+
+	L.geoJson(statesData).addTo(map);	
+	*/
+
+	// 타일레이어 추가
+	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMAp</a> contributors'
+	}).addTo(map);
+
+	console.log(map);
+
+	// density별 색상
+	function getColor(d) {
+		return d > 1000 ? '#800026' :
+					 d > 500  ? '#BD0026' :
+					 d > 200  ? '#E31A1C' :
+					 d > 100  ? '#FC4E2A' :
+					 d > 50   ? '#FD8D3C' :
+					 d > 20   ? '#FEB24C' :
+					 d > 10   ? '#FED976' :
+											'#FFEDA0';
+	}
+
+	// feature에 대한 스타일 지정
+	function style(feature) {
+		return {
+			fillColor: getColor(feature.properties.density),
+			weight: 2,
+			color: 'white',
+			dashArray: '3',
+			fillOpacity: 0.7
+		};
+	}
+
+	// Highlight function
+	function highlightFeature(e) {
+		var layer = e.target;
+
+		layer.setStyle({
+			weight: 3,
+			color: '#636363',
+			dashArray: '',
+			fillOpacity: 0.5
+		});
+
+		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+			layer.bringToFront();
+		}
+	}
+
+	// Reset highlight
+	function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+	}
+
+	// Zoom
+	function zoomToFeature(e) {
+		map.fitBounds(e.target.getBounds());
+	}
+
+	// 각각 feature들에 대해 설정하기
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: zoomToFeature
+		});
+	}
+
+	// 지도에 statesData 가져와서 레이어 올리기
+	geojson = L.geoJson(statesData, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);
+
+	console.log(map);
+
 </script>

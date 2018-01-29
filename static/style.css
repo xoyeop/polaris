@@ -94,6 +94,12 @@ body {
 	margin-left: -45px;
 }
 
+/* Map Size */
+#trajectory-map {
+	width: 70%;
+	height: 500px;
+}
+
 /* footer 영역 */
 .footer {
 	position: absolute;
