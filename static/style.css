@@ -1,0 +1,114 @@
+@charset utf-8;
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+body {
+	font-family: 'Nanum Gothic', sans-serif;
+	color:red;
+}
+
+.wrap {
+	/* To center on a page vertically and horizontally */ 
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.wrap#wrap-main {
+	width: 80%;	
+	text-align: center;
+}
+
+#wrap-main img {
+	width: 70%;
+	height: auto;
+}
+
+/* Search bar */
+.wrap form#search-form {
+	overflow: hidden;
+	width: 100%;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+.wrap input[type=text] {
+	width: 100%;
+	height: 50px;
+	padding: 10px;
+	font-size: 17px;
+	float: left;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.wrap input[type=submit] {
+	width: 50px;
+	height: 50px;
+	padding: 6px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	font-size: 17px;
+	margin-left: -50px;
+}
+
+/* Top nav (logo & search form) */
+.top-nav {
+	background-color: #eaeaea;
+	height: 80px;
+	width: 100%;
+	overflow: hidden;
+	padding: 10px;
+}
+
+.top-nav img#logo {
+	width: 100%;	
+	height: auto;
+	margin: 5px;
+	vertical-align: middle;
+}
+
+.top-nav form#search-form {
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.top-nav input[type=text] {
+	width: 100%;
+	height: 45px;
+	padding: 10px;
+	font-size: 17px;
+	float: left;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.top-nav input[type=submit] {
+	width: 45px;
+	height: 45px;
+	padding: 6px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	font-size: 17px;
+	margin-left: -45px;
+}
+
+/* footer 영역 */
+.footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: #bdbdbd;
+}
+
+.footer p {
+	padding: 10px;
+	font-size: 0.813em;
+	text-align: right;
+	text-transform: uppercase;
+	font-weight: bold;
+}
