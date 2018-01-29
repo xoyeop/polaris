@@ -1,1 +1,12 @@
 Event detection!! {{ keyword }}
+<div id="event-detection-wrap"></div>
+<script>
+	$(function(){
+		$.ajax('/event_detection', {	
+			success: function(data) {
+				console.log(data);
+				$("#event-detection-wrap").html(data);
+			}
+		});
+	}
+</script>

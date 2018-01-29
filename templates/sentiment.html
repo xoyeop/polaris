@@ -1,1 +1,10 @@
 Sentiment!!
+
+<div id="sentiment-wrap"></div>
+<script>
+	$.ajax('/sentiment', {	
+		success: function(data) {
+			$("#sentiment-wrap").html(data);
+		}
+	});
+</script>

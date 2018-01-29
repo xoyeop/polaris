@@ -1,1 +1,10 @@
 Trajectory!!
+
+<div id="trajectory-wrap"></div>
+<script>
+	$.ajax('/trajectory', {	
+		success: function(data) {
+			$("#trajectory-wrap").html(data);
+		}
+	});
+</script>
