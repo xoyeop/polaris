@@ -20,7 +20,7 @@
 			<div id="wrap-main">
 				<center><img src="{{ url_for('static', filename='img/polaris-logo.png') }}" align="middle"></center>
 				<div style="height:30px;"></div>
-				<form action="{{ url_for('search') }}" method="post" id="search-form">
+				<form action="{{ url_for('search') }}" method="post" id="search-form" autocomplete="off">
 					<input type="text" placeholder="Enter keyword..." name="keyword"/>
 					<input type="submit" class="fa" value="&#xf002;"/>
 				</form>
@@ -29,7 +29,7 @@
 
 		<!-- Footer -->
 		<footer class="footer">
-			<p>Social Computing Lab.</p>
+			<p><a href="http://sclab.gachon.ac.kr" target="_blank">Social Computing Lab.</a></p>
 		</footer>
 	</body>
 </html>
